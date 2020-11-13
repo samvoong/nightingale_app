@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1033816119313",
+    "firebase_url": "https://nightingalev1.firebaseio.com",
+    "project_id": "nightingalev1",
+    "storage_bucket": "nightingalev1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033816119313:android:11783b5d1eac77bffef9b0",
+        "android_client_info": {
+          "package_name": "com.psiloveyou.nightingale_v1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033816119313-kmbed2u7v6sn2omsge9li0r04ab0572r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDErHoO43QT0JrPyNjQc4juOhdj9AhrnYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1033816119313-kmbed2u7v6sn2omsge9li0r04ab0572r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

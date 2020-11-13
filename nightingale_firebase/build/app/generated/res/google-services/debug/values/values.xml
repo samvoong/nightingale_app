@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">1033816119313-kmbed2u7v6sn2omsge9li0r04ab0572r.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://nightingalev1.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">1033816119313</string>
+    <string name="google_api_key" translatable="false">AIzaSyDErHoO43QT0JrPyNjQc4juOhdj9AhrnYs</string>
+    <string name="google_app_id" translatable="false">1:1033816119313:android:11783b5d1eac77bffef9b0</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDErHoO43QT0JrPyNjQc4juOhdj9AhrnYs</string>
+    <string name="google_storage_bucket" translatable="false">nightingalev1.appspot.com</string>
+    <string name="project_id" translatable="false">nightingalev1</string>
+</resources>
