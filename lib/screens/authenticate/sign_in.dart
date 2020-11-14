@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nightingale_v1/services/auth.dart';
-import 'package:nightingale_v1/shared/constants.dart';
-import 'package:nightingale_v1/shared/loading.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter_login/flutter_login.dart';
-import 'package:nightingale_v1/screens/home/home.dart';
 import 'package:nightingale_v1/screens/home/router.dart';
 
 class LoginScreen extends StatelessWidget {
