@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Container(
             width: 100,
-            height: 30,
+            height: 40,
             margin: EdgeInsets.only(top: 40),
             decoration: BoxDecoration(
                 image: DecorationImage(
@@ -60,8 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           SizedBox(height: 30,),
-          Text("Welcome to Nightingale App", style: TextStyle(
-              fontSize: 40,
+          Text("Welcome to the Nightingale App", style: TextStyle(
+              fontSize: 35,
               color: Colors.black,
               fontWeight: FontWeight.w900
           ),textAlign: TextAlign.center,),
@@ -72,7 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/drug.png'),
-                    fit: BoxFit.contain
+                    fit: BoxFit.contain,
+                    alignment: Alignment.center
                 )
             ),
           ),
