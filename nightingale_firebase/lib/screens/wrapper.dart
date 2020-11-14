@@ -3,6 +3,7 @@ import 'package:nightingale_v1/models/user.dart';
 import 'package:nightingale_v1/screens/authenticate/authenticate.dart';
 import 'package:nightingale_v1/screens/home/home.dart';
 import 'package:provider/provider.dart';
+import 'home/home.dart';
 
 
 class Wrapper extends StatelessWidget {
@@ -13,7 +14,7 @@ class Wrapper extends StatelessWidget {
     if(user == null) {
       return Authenticate();
     } else {
-      return Home();
+      return HomeScreen();
     }
     //return either home or Autenticate widget
   }

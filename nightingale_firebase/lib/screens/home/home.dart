@@ -1,38 +1,103 @@
 import 'package:flutter/material.dart';
-// import 'package:nightingale_v1/models/brew.dart';
-import 'package:nightingale_v1/models/medicine.dart';
-// import 'package:nightingale_v1/screens/home/brew_list.dart';
-import 'package:nightingale_v1/screens/home/medicine_list.dart';
-import 'package:nightingale_v1/services/auth.dart';
-import 'package:nightingale_v1/services/database.dart';
-import 'package:provider/provider.dart';
+import 'package:nightingale_v1/screens/authenticate/sign_in.dart';
+import 'package:nightingale_v1/screens/home/medicine_page.dart';
+import '../authenticate/sign_in.dart';
 
-class Home extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        fontFamily: 'ubuntu',
+      ),
+      home: MyHomePage(),
+      routes: {
+        LoginScreen.routeName: (context) => LoginScreen(),
+      },
+    );
+  }
+}
 
-  final AuthService _auth = AuthService();
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<List<Medicine>>.value(
-        value: DatabaseService().medicines,
-        child: Scaffold(
-        backgroundColor: Colors.brown[50],
-        appBar: AppBar(
-          backgroundColor: Colors.brown[400],
-          elevation: 0.0,
-          actions: <Widget>[
-            FlatButton.icon(
-              icon: Icon(Icons.person),
-              label: Text('logout'),
-              onPressed: () async {
-                await _auth.signOut();
-              },
-            )
-          ],
-        ),
-        body: MedicineList(),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.teal,
+        title: const Text('Nightingale Prototype'),
+      ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              InkWell(
+                onTap: logOut,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(20)),
+                      color: Colors.white
+                  ),
+                  child: Text('Log Out', style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.blueAccent
+                  ),),
+                ),
+              )
+            ],
+          ),
+          Container(
+            width: 100,
+            height: 50,
+            margin: EdgeInsets.only(top: 40),
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/nightingale_logo.png')
+                )
+            ),
+          ),
+          SizedBox(height: 30,),
+          Text("Welcome to Nightingale App", style: TextStyle(
+              fontSize: 40,
+              color: Colors.black,
+              fontWeight: FontWeight.w900
+          ),textAlign: TextAlign.center,),
+          SizedBox(height: 30,),
+          Text("Track you medication schedule with ease", style: TextStyle(
+            fontSize: 18,
+            color: Colors.teal,
+            fontWeight: FontWeight.w400,
+          ), textAlign: TextAlign.center,),
+          SizedBox(height: 60,),
+          Container(
+            height: 350,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/splash.png'),
+                    fit: BoxFit.cover
+                )
+            ),
+          ),
+          Expanded(
+            child: Container(),
+          ),
+        ],
       ),
     );
-
+  }
+  void logOut()
+  {
+    Navigator.pushNamed(context, LoginScreen.routeName);
   }
 }

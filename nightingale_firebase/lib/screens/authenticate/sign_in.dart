@@ -2,103 +2,75 @@ import 'package:flutter/material.dart';
 import 'package:nightingale_v1/services/auth.dart';
 import 'package:nightingale_v1/shared/constants.dart';
 import 'package:nightingale_v1/shared/loading.dart';
+import 'package:flutter/scheduler.dart' show timeDilation;
+import 'package:flutter_login/flutter_login.dart';
+import 'package:nightingale_v1/screens/home/home.dart';
+import 'package:nightingale_v1/screens/home/router.dart';
 
-class SignIn extends StatefulWidget {
-
-  final Function toggleView;
-  SignIn({this. toggleView});
-
-  @override
-  _SignInState createState() => _SignInState();
-}
-
-class _SignInState extends State<SignIn> {
-
-  //instance of the AuthService
+class LoginScreen extends StatelessWidget {
+  static const routeName = '/login';
   final AuthService _auth =  AuthService();
-  final _formKey = GlobalKey<FormState>();
-  bool loading = false;
 
-  //text field state 
+  //text field state
   String email = '';
   String password = '';
   String error = '';
 
 
-  @override
-  Widget build(BuildContext context) {
+  Duration get loginTime => Duration(milliseconds: timeDilation.ceil() * 2250);
 
-    return loading ? Loading() : Scaffold(
-      backgroundColor: Colors.brown[100],
-      appBar: AppBar(
-        backgroundColor: Colors.brown[400],
-        elevation: 0.0,
-        title: Text('Sign in to NightingaleV1')
-      ),
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: <Widget>[
-              SizedBox(height: 20.0),
-              TextFormField(
-                decoration: textInputDecoration.copyWith(hintText: 'Email'),
-                validator: (val) => val.isEmpty ? 'Enter an email' : null,
-                onChanged: (val){
-                  setState(()=> email = val);
-                },
-              ),
-              SizedBox(height: 20),
-              TextFormField(
-                decoration: textInputDecoration.copyWith(hintText: 'Password'),
-                obscureText: true,
-                validator: (val) => val.length < 5? 'Enter an password 5+ chars long' : null,
-                onChanged: (val){
-                  setState(() => password = val);
-                },
-              ),
-              SizedBox(height: 20),
-              RaisedButton(
-                color: Colors.pink[400],
-                child: Text(
-                  'Sign in',
-                  style: TextStyle(color: Colors.white)
-                ),
-                onPressed: () async {
-                  if(_formKey.currentState.validate()){
-                    setState(() => loading = true);
-                    dynamic result = await _auth.signInWithEmailAndPassword(email, password);
-                    if(result == null){
-                      setState(() {
-                        error = 'please use valid email or password';
-                        loading = false;
-                      });
-                    }
-                  }
-                },
-              ),
-              SizedBox(height: 12),
-              Text(
-                error,
-                style: TextStyle(color: Colors.red, fontSize:14),
-              ),
-              RaisedButton(
-                color: Colors.pink[400],
-                child: Text(
-                  'Go to Register',
-                  style: TextStyle(color: Colors.white)
-                ),
-                onPressed: () async {
-                  widget.toggleView();
-                },
-              ),
-            ],
-          ),
-        )
-        
-      ),
-    );
+  Future<String> _loginUser(LoginData data) {
+    return Future.delayed(loginTime).then((_) {
+      dynamic result = _auth.signInWithEmailAndPassword(email, password);
+      if(result == null){
+        return 'Please use a valid email or password';
+      }
+      return null;
+    });
   }
 
+  @override
+  Widget build(BuildContext context) {
+    final inputBorder = BorderRadius.vertical(
+      bottom: Radius.circular(10.0),
+      top: Radius.circular(20.0),
+    );
+
+    return FlutterLogin(
+      title: 'Nightingale',
+      logo: 'assets/images/nightingale_logo.png',
+      logoTag: 'Logo Tag',
+      titleTag: 'Title Tag',
+      emailValidator: (value) {
+        if (!value.contains('@') && !value.endsWith('.com')) {
+          return "Enter an email";
+        }
+        return null;
+      },
+      passwordValidator: (value) {
+        if (value.isEmpty) {
+          return 'Enter a password';
+        }
+        return null;
+      },
+      onLogin: (loginData) {
+        print('Login info');
+        print('Name: ${loginData.name}');
+        print('Password: ${loginData.password}');
+        return _loginUser(loginData);
+      },
+      onSignup: (loginData) {
+        print('Signup info');
+        print('Name: ${loginData.name}');
+        print('Password: ${loginData.password}');
+        return _loginUser(loginData);
+      },
+      onSubmitAnimationCompleted: () {
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => RouterScreen(),
+        ));
+      },
+      showDebugButtons: false,
+    );
+  }
 }
