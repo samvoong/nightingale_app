@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nightingale_v1/screens/authenticate/sign_in.dart';
 import 'package:nightingale_v1/screens/home/medicine_page.dart';
 import '../authenticate/sign_in.dart';
+import 'package:nightingale_v1/services/auth.dart';
+
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -25,6 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -32,37 +35,27 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        title: const Text('Nightingale Prototype'),
+        elevation: 0.0,
+        actions: <Widget>[
+          FlatButton.icon(
+            icon: Icon(Icons.person),
+            label: Text('logout'),
+            onPressed: () async {
+              await _auth.signOut();
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              InkWell(
-                onTap: logOut,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(20)),
-                      color: Colors.white
-                  ),
-                  child: Text('Log Out', style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.blueAccent
-                  ),),
-                ),
-              )
-            ],
-          ),
           Container(
             width: 100,
-            height: 50,
+            height: 30,
             margin: EdgeInsets.only(top: 40),
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/nightingale_logo.png')
+                    image: AssetImage('assets/images/nightingale_logo.png'),
+                    fit: BoxFit.contain
                 )
             ),
           ),
@@ -73,22 +66,22 @@ class _MyHomePageState extends State<MyHomePage> {
               fontWeight: FontWeight.w900
           ),textAlign: TextAlign.center,),
           SizedBox(height: 30,),
-          Text("Track you medication schedule with ease", style: TextStyle(
-            fontSize: 18,
-            color: Colors.teal,
-            fontWeight: FontWeight.w400,
-          ), textAlign: TextAlign.center,),
-          SizedBox(height: 60,),
           Container(
-            height: 350,
+            height: 300,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/splash.png'),
-                    fit: BoxFit.cover
+                    image: AssetImage('assets/images/drug.png'),
+                    fit: BoxFit.contain
                 )
             ),
           ),
+          SizedBox(height: 30,),
+          Text("Track you medication schedule with ease", style: TextStyle(
+            fontSize: 20,
+            color: Colors.teal,
+            fontWeight: FontWeight.w400,
+          ), textAlign: TextAlign.center,),
           Expanded(
             child: Container(),
           ),
