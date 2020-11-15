@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nightingale_v1/shared/constants.dart';
+import 'package:nightingale_v1/models/user.dart';
+import 'package:nightingale_v1/services/database.dart';
+import 'package:provider/provider.dart';
 
 class AddMedForm extends StatefulWidget {
   @override
@@ -15,6 +18,8 @@ class _AddMedFormState extends State<AddMedForm> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
+
     return Form(
       key: _formKey,
       child: Column(
@@ -42,8 +47,8 @@ class _AddMedFormState extends State<AddMedForm> {
               color: Colors.white,
               textColor: Colors.teal,
               onPressed: () async {
-                print(_currentMedname);
-                print(_currentNotes);
+                await DatabaseService(uid: user.uid)
+                    .updateUserData(_currentMedname, _currentNotes);
               }),
         ],
       ),
