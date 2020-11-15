@@ -40,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
           FlatButton.icon(
             icon: Icon(Icons.person),
             label: Text('logout'),
+            textColor: Colors.white,
             // onPressed: () async {
             //   await _auth.signOut();
             //   Navigator.of(context).push(
@@ -54,9 +55,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: [
           Container(
-            width: 100,
-            height: 40,
-            margin: EdgeInsets.only(top: 40),
+            width: 150,
+            height: 150,
+            margin: EdgeInsets.only(top: 0),
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/nightingale_logo.png'),
@@ -64,15 +65,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
             ),
           ),
-          SizedBox(height: 30,),
+          SizedBox(height: 0),
           Text("Welcome to the Nightingale App", style: TextStyle(
-              fontSize: 35,
+              fontSize: 25,
               color: Colors.black,
               fontWeight: FontWeight.w900
           ),textAlign: TextAlign.center,),
-          SizedBox(height: 30,),
+          SizedBox(height: 20,),
           Container(
-            height: 300,
+            height: 200,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
                 image: DecorationImage(
@@ -82,9 +83,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
             ),
           ),
-          SizedBox(height: 30,),
+          SizedBox(height: 20,),
           Text("Track you medication schedule with ease", style: TextStyle(
-            fontSize: 20,
+            fontSize: 15,
             color: Colors.teal,
             fontWeight: FontWeight.w400,
           ), textAlign: TextAlign.center,),

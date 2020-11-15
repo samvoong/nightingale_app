@@ -24,7 +24,7 @@ class MedicineScreen extends StatelessWidget {
                     padding: EdgeInsets.only(
                         bottom: MediaQuery.of(context).viewInsets.bottom),
                     decoration: new BoxDecoration(
-                        color: Colors.pink,
+                        color: Colors.teal,
                         borderRadius: new BorderRadius.only(
                             topLeft: const Radius.circular(25.0),
                             topRight: const Radius.circular(25.0))),
@@ -58,12 +58,14 @@ class MedicineScreen extends StatelessWidget {
             FlatButton.icon(
               icon: Icon(Icons.person),
               label: Text('logout'),
+              textColor: Colors.white,
               onPressed: () async {
                 await _auth.signOut();
               },
             ),
             FlatButton.icon(
               label: Text('Add'),
+              textColor: Colors.white,
               icon: Icon(Icons.add_alarm),
               onPressed: () => _showSettingsPanel(),
             )

@@ -21,7 +21,7 @@ class _AddMedFormState extends State<AddMedForm> {
         children: <Widget>[
           Text(
             'Add a new Medicine',
-            style: TextStyle(fontSize: 18),
+            style: TextStyle(fontSize: 18, color: Colors.white),
           ),
           SizedBox(height: 20),
           TextFormField(
@@ -38,8 +38,9 @@ class _AddMedFormState extends State<AddMedForm> {
           ),
           SizedBox(height: 20),
           RaisedButton(
-              color: Colors.blueGrey,
               child: Text("Add"),
+              color: Colors.white,
+              textColor: Colors.teal,
               onPressed: () async {
                 print(_currentMedname);
                 print(_currentNotes);
