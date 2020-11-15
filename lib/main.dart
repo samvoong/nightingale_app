@@ -3,7 +3,7 @@ import 'package:nightingale_v1/models/user.dart';
 import 'package:nightingale_v1/screens/wrapper.dart';
 import 'package:nightingale_v1/services/auth.dart';
 import 'package:provider/provider.dart';
-import 'package:nightingale_v1/screens/authenticate/sign_in.dart';
+import 'package:nightingale_v1/screens/authenticate/sign_in_page.dart';
 
 
 void main() {

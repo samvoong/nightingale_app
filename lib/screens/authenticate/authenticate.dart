@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nightingale_v1/screens/authenticate/register.dart';
-import 'package:nightingale_v1/screens/authenticate/sign_in.dart';
+import 'package:nightingale_v1/screens/authenticate/sign_in_page.dart';
 
-import 'sign_in.dart';
+import 'sign_in_page.dart';
 
 class Authenticate extends StatefulWidget {
   @override

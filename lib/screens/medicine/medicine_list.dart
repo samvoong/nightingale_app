@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nightingale_v1/models/medicine.dart';
-import 'package:nightingale_v1/screens/home/medicine_tile.dart';
+import 'package:nightingale_v1/screens/medicine/medicine_tile.dart';
 import 'package:provider/provider.dart';
 
 class MedicineList extends StatefulWidget {

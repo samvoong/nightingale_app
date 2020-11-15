@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import '../authenticate/sign_in.dart';
-import 'medicine_page.dart';
+import 'package:nightingale_v1/screens/doctor/doctor_page.dart';
+import '../authenticate/sign_in_page.dart';
+import '../medicine/medicine_page.dart';
 import 'package:nightingale_v1/screens/home/navbar_item.dart';
 import 'package:nightingale_v1/screens/home/navbar.dart';
-import 'package:nightingale_v1/screens/home/home.dart';
-import 'package:nightingale_v1/screens/schedule/schedule.dart';
+import 'package:nightingale_v1/screens/home/home_page.dart';
+import 'package:nightingale_v1/screens/schedule/scheduling_page.dart';
 
 class RouterScreen extends StatefulWidget {
   @override
@@ -21,17 +22,22 @@ class RouterState extends State<RouterScreen> {
     TabItem(
       tabName: "Home",
       icon: Icons.home,
-      page: HomeScreen(),
+      page: HomePage(),
     ),
     TabItem(
       tabName: "Medicine",
       icon: Icons.medical_services,
-      page: MedicineScreen(),
+      page: MedicinePage(),
     ),
     TabItem(
       tabName: "Schedule",
       icon: Icons.calendar_today_outlined,
       page: SchedulingPage(),
+    ),
+    TabItem(
+      tabName: "Doctor",
+      icon: Icons.call,
+      page: DoctorPage(),
     ),
   ];
 

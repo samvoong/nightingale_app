@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nightingale_v1/models/user.dart';
 import 'package:nightingale_v1/screens/authenticate/authenticate.dart';
-import 'package:nightingale_v1/screens/home/home.dart';
+import 'package:nightingale_v1/screens/home/home_page.dart';
 import 'package:provider/provider.dart';
-import 'home/home.dart';
+import 'home/home_page.dart';
 
 
 class Wrapper extends StatelessWidget {
@@ -14,7 +14,7 @@ class Wrapper extends StatelessWidget {
     if(user == null) {
       return Authenticate();
     } else {
-      return HomeScreen();
+      return HomePage();
     }
     //return either home or Autenticate widget
   }

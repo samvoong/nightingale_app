@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:nightingale_v1/models/medicine.dart';
-import 'package:nightingale_v1/screens/home/add_med_form.dart';
-import 'package:nightingale_v1/screens/home/medicine_list.dart';
+import 'package:nightingale_v1/screens/medicine/add_med_form.dart';
+import 'package:nightingale_v1/screens/medicine/medicine_list.dart';
 import 'package:nightingale_v1/services/auth.dart';
 import 'package:nightingale_v1/services/database.dart';
 import 'package:provider/provider.dart';
 
-class MedicineScreen extends StatelessWidget {
+class MedicinePage extends StatelessWidget {
   static const routeName = '/medicine';
   final AuthService _auth = AuthService();
 
@@ -52,17 +52,20 @@ class MedicineScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          title: Text(
+            'Your Medicine',
+          ),
           backgroundColor: Colors.teal,
           elevation: 0.0,
           actions: <Widget>[
-            FlatButton.icon(
-              icon: Icon(Icons.person),
-              label: Text('logout'),
-              textColor: Colors.white,
-              onPressed: () async {
-                await _auth.signOut();
-              },
-            ),
+            // FlatButton.icon(
+            //   icon: Icon(Icons.person),
+            //   label: Text('logout'),
+            //   textColor: Colors.white,
+            //   onPressed: () async {
+            //     await _auth.signOut();
+            //   },
+            // ),
             FlatButton.icon(
               label: Text('Add'),
               textColor: Colors.white,

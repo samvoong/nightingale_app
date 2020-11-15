@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nightingale_v1/screens/home/home.dart';
+import 'package:nightingale_v1/screens/home/home_page.dart';
 import 'package:nightingale_v1/screens/home/router.dart';
 
 class TabItem {

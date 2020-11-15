@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:nightingale_v1/screens/authenticate/sign_in.dart';
-import 'package:nightingale_v1/screens/home/medicine_page.dart';
-import '../authenticate/sign_in.dart';
+import 'package:nightingale_v1/screens/authenticate/sign_in_page.dart';
+import 'package:nightingale_v1/screens/medicine/medicine_page.dart';
+import '../authenticate/sign_in_page.dart';
 import 'package:nightingale_v1/services/auth.dart';
 
 
-class HomeScreen extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
             ),
           ),
-          SizedBox(height: 0),
+          SizedBox(height: 50),
           Text("Welcome to the Nightingale App", style: TextStyle(
               fontSize: 25,
               color: Colors.black,
