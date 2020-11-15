@@ -55,13 +55,13 @@ class MedicineScreen extends StatelessWidget {
           backgroundColor: Colors.teal,
           elevation: 0.0,
           actions: <Widget>[
-            FlatButton.icon(
-              icon: Icon(Icons.person),
-              label: Text('logout'),
-              onPressed: () async {
-                await _auth.signOut();
-              },
-            ),
+            // FlatButton.icon(
+            //   icon: Icon(Icons.person),
+            //   label: Text('logout'),
+            //   onPressed: () async {
+            //     await _auth.signOut();
+            //   },
+            // ),
             FlatButton.icon(
               label: Text('Add'),
               icon: Icon(Icons.add_alarm),
