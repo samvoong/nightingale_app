@@ -53,7 +53,7 @@ void _navigateTo(String screen) {
 				MaterialPageRoute(builder: (context) => SchedulingPage()),
 			);
 			break;
-      	case "Medicine":
+      	case "Doctor":
 			Navigator.push(
 				context,
 				MaterialPageRoute(builder: (context) => DoctorPage()),
