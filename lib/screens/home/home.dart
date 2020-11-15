@@ -40,9 +40,14 @@ class _MyHomePageState extends State<MyHomePage> {
           FlatButton.icon(
             icon: Icon(Icons.person),
             label: Text('logout'),
-            onPressed: () async {
-              await _auth.signOut();
-            },
+            // onPressed: () async {
+            //   await _auth.signOut();
+            //   Navigator.of(context).push(
+            //       MaterialPageRoute(
+            //         builder: (context) => LoginScreen(),
+            //       ),
+            //   );
+            // },
           ),
         ],
       ),
@@ -89,9 +94,5 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
-  }
-  void logOut()
-  {
-    Navigator.pushNamed(context, LoginScreen.routeName);
   }
 }

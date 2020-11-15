@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nightingale_v1/services/auth.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
@@ -8,20 +9,17 @@ class LoginScreen extends StatelessWidget {
   static const routeName = '/login';
   final AuthService _auth =  AuthService();
 
-  //text field state
-  String email = '';
-  String password = '';
-  String error = '';
 
 
   Duration get loginTime => Duration(milliseconds: timeDilation.ceil() * 2250);
 
   Future<String> _loginUser(LoginData data) {
-    return Future.delayed(loginTime).then((_) {
-      dynamic result = _auth.signInWithEmailAndPassword(email, password);
+    return Future.delayed(loginTime).then((_) async {
+      AuthResult result = await _auth.signInWithEmailAndPassword(data.name, data.password);
       if(result == null){
         return 'Please use a valid email or password';
       }
+      print('Logging in...');
       return null;
     });
   }
@@ -51,18 +49,19 @@ class LoginScreen extends StatelessWidget {
         return null;
       },
       onLogin: (loginData) {
-        print('Login info');
+        print('Login info:::');
         print('Name: ${loginData.name}');
         print('Password: ${loginData.password}');
         return _loginUser(loginData);
       },
       onSignup: (loginData) {
-        print('Signup info');
+        print('Signup info:::');
         print('Name: ${loginData.name}');
         print('Password: ${loginData.password}');
         return _loginUser(loginData);
       },
       onSubmitAnimationCompleted: () {
+        print('Moving to next screen...');
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => RouterScreen(),
         ));

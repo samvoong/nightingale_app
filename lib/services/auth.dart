@@ -8,7 +8,10 @@ class AuthService {
   
   //user obj firebase user
   User _userFromFirebaseUser(FirebaseUser user) {
-    return user != null ? User(uid: user.uid) : null;
+    print('Getting user from Firebase...');
+    String userUID = user.uid;
+    print('UID: $userUID');
+    return user != null ? User(uid: userUID) : null;
   }
 
   Stream<User> get user {
@@ -29,8 +32,7 @@ class AuthService {
     }
   }
 
-  //sign in with email and pass 
-
+  //sign in with email and pass
   Future registerWithEmailAndPassword(String email, String password) async {
     try{
 
@@ -54,14 +56,16 @@ class AuthService {
     }
   }
 
-    Future signInWithEmailAndPassword(String email, String password) async {
+  Future signInWithEmailAndPassword(String email, String password) async {
     try{
-
+      print('Checking email and password...');
       AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
-      return _userFromFirebaseUser(user);
+      User validUser = _userFromFirebaseUser(user);
+      print('User found: $validUser');
+      return result;
     } catch(e) {
-      print(e.toString());
+      print('User not found: ${e.toString()}');
       return null;
     }
   }
