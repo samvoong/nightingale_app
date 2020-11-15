@@ -31,7 +31,7 @@ class RouterState extends State<RouterScreen> {
     TabItem(
       tabName: "Schedule",
       icon: Icons.calendar_today_outlined,
-      page: ScheduleScreen(),
+      page: SchedulingPage(),
     ),
   ];
 
