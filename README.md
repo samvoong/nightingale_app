@@ -15,10 +15,3 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-## TO DO:
-
- - Finish home page
- - Add navigation bar/menu button
- - Create medicine page
- - Create schedule page
- - Integrate voice tech
