@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:nightingale_v1/models/brew.dart';
 import 'package:nightingale_v1/models/medicine.dart';
 import 'package:nightingale_v1/models/user.dart';
@@ -10,8 +11,18 @@ class DatabaseService {
   final CollectionReference medicineCollection =
       Firestore.instance.collection('medicines');
 
-  Future updateUserData(String medName, String notes) async {
-    return await medicineCollection.document(uid).setData({
+  final CollectionReference testCollection =
+      Firestore.instance.collection('testingonly');
+
+  // Future updateUserData(String medName, String notes) async {
+  //   return await medicineCollection.document(uid).setData({
+  //     'medName': medName,
+  //     'notes': notes,
+  //   });
+  // }
+
+    Future updateUserData(String medName, String notes) async {
+    return await medicineCollection.document(medName).setData({
       'medName': medName,
       'notes': notes,
     });
