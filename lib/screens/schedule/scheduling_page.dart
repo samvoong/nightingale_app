@@ -57,36 +57,36 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
     final _selectedDay = DateTime.now();
 
     _events = {
-      _selectedDay.add(Duration(days: 1)): ['Paracetamol  09:30', 'Vitamin C  18:30'],
-      _selectedDay.add(Duration(days: 2)): ['Paracetamol  09:30','Ramipril  22:00'],
-      _selectedDay.add(Duration(days: 3)): ['Paracetamol  09:30', 'Vitamin C  18:30'],
-      _selectedDay.add(Duration(days: 5)): ['Vitamin C  18:30'],
-      _selectedDay.add(Duration(days: 6)): ['Ramipril  22:00'],
-      _selectedDay.add(Duration(days: 7)): ['Vitamin D  13:00'],
-      _selectedDay.add(Duration(days: 8)): ['Paracetamol  09:30', 'Vitamin C  18:30'],
-      _selectedDay.add(Duration(days: 9)): ['Paracetamol  09:30','Ramipril  22:00'],
-      _selectedDay.add(Duration(days: 10)): ['Paracetamol  09:30', 'Vitamin C  18:30'],
-      _selectedDay.add(Duration(days: 12)): ['Vitamin C  18:30'],
-      _selectedDay.add(Duration(days: 13)): ['Ramipril  22:00'],
-      _selectedDay.add(Duration(days: 14)): ['Vitamin D  13:00'],
-      _selectedDay.add(Duration(days: 15)): ['Paracetamol  09:30', 'Vitamin C  18:30'],
-      _selectedDay.add(Duration(days: 16)): ['Paracetamol  09:30','Ramipril  22:00'],
-      _selectedDay.add(Duration(days: 17)): ['Paracetamol  09:30', 'Vitamin C  18:30'],
-      _selectedDay.add(Duration(days: 19)): ['Vitamin C  18:30'],
-      _selectedDay.add(Duration(days: 20)): ['Ramipril  22:00'],
-      _selectedDay.add(Duration(days: 21)): ['Vitamin D  13:00'],
-      _selectedDay.add(Duration(days: 22)): ['Paracetamol  09:30', 'Vitamin C  18:30'],
-      _selectedDay.add(Duration(days: 23)): ['Paracetamol  09:30','Ramipril  22:00'],
-      _selectedDay.add(Duration(days: 24)): ['Paracetamol  09:30', 'Vitamin C  18:30'],
-      _selectedDay.add(Duration(days: 26)): ['Vitamin C  18:30'],
-      _selectedDay.add(Duration(days: 27)): ['Ramipril  22:00'],
-      _selectedDay.add(Duration(days: 28)): ['Vitamin D  13:00'],
-      _selectedDay.add(Duration(days: 29)): ['Paracetamol  09:30', 'Vitamin C  18:30'],
-      _selectedDay.add(Duration(days: 30)): ['Paracetamol  09:30','Ramipril  22:00'],
-      _selectedDay.add(Duration(days: 31)): ['Paracetamol  09:30', 'Vitamin C  18:30'],
-      _selectedDay.add(Duration(days: 33)): ['Vitamin C  18:30'],
-      _selectedDay.add(Duration(days: 34)): ['Ramipril  22:00'],
-      _selectedDay.add(Duration(days: 35)): ['Vitamin D  13:00'],
+      _selectedDay.add(Duration(days: 1)): ['Vitamin C  18:30', 'Ibuprofen  09:30'],
+      _selectedDay.add(Duration(days: 2)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 3)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 5)): ['Vitamin C  18:30', 'Ramipril  20:00'],
+      _selectedDay.add(Duration(days: 6)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 7)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 8)): ['Vitamin C  18:30', 'Ibuprofen  09:30'],
+      _selectedDay.add(Duration(days: 9)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 10)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 12)): ['Vitamin C  18:30', 'Ramipril  20:00'],
+      _selectedDay.add(Duration(days: 13)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 14)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 15)): ['Vitamin C  18:30', 'Ibuprofen  09:30'],
+      _selectedDay.add(Duration(days: 16)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 17)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 19)): ['Vitamin C  18:30', 'Ramipril  20:00'],
+      _selectedDay.add(Duration(days: 20)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 21)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 22)): ['Vitamin C  18:30', 'Ibuprofen  09:30'],
+      _selectedDay.add(Duration(days: 23)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 24)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 26)): ['Vitamin C  18:30', 'Ramipril  20:00'],
+      _selectedDay.add(Duration(days: 27)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 28)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 29)): ['Vitamin C  18:30', 'Ibuprofen  09:30'],
+      _selectedDay.add(Duration(days: 30)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 31)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 33)): ['Vitamin C  18:30', 'Ramipril  20:00'],
+      _selectedDay.add(Duration(days: 34)): ['Vitamin C  18:30'],
+      _selectedDay.add(Duration(days: 35)): ['Vitamin C  18:30'],
     };
 
     _selectedEvents = _events[_selectedDay] ?? [];
@@ -307,43 +307,31 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Semantics (
-              child: RaisedButton(
-                child: Text('Month'),
-                onPressed: () {
-                  setState(() {
-                    _calendarController.setCalendarFormat(CalendarFormat.month);
-                  });
-                },
-              ),
-              label: 'view month',
-              enabled: true
+            RaisedButton(
+              child: Text('Month'),
+              onPressed: () {
+                setState(() {
+                  _calendarController.setCalendarFormat(CalendarFormat.month);
+                });
+              },
             ),
-            Semantics(
-              child: RaisedButton(
-                child: Text('2 weeks'),
-                onPressed: () {
-                  setState(() {
-                    _calendarController
-                        .setCalendarFormat(CalendarFormat.twoWeeks);
-                  });
-                },
-              ),
-              label: 'view 2 weeks',
-              enabled: true
+            RaisedButton(
+              child: Text('2 weeks'),
+              onPressed: () {
+                setState(() {
+                  _calendarController
+                      .setCalendarFormat(CalendarFormat.twoWeeks);
+                });
+              },
             ),
-            Semantics(
-              child: RaisedButton(
-                child: Text('Week'),
-                onPressed: () {
-                  setState(() {
-                    _calendarController.setCalendarFormat(CalendarFormat.week);
-                  });
-                },
-              ),
-              label: 'view 1 weeks',
-              enabled: true
-            )
+            RaisedButton(
+              child: Text('Week'),
+              onPressed: () {
+                setState(() {
+                  _calendarController.setCalendarFormat(CalendarFormat.week);
+                });
+              },
+            ),
           ],
         ),
         SizedBox(height: 8.0),
@@ -363,8 +351,8 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
           onPressed: () {
             scheduleAlarm();
             final snackBar = SnackBar(
-              content: Text('Alarm set successfully!'),
-              duration: Duration(seconds: 2)
+                content: Text('Alarm set successfully!'),
+                duration: Duration(seconds: 2)
             );
 
             print('Alarm set successfully!');
