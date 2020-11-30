@@ -16,7 +16,7 @@ class MedicinePage extends StatelessWidget {
       showModalBottomSheet<dynamic>(
           isScrollControlled: true,
           context: context,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
           builder: (BuildContext bc) {
             return Wrap(children: <Widget>[
               Container(

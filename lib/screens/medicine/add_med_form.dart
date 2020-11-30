@@ -49,6 +49,7 @@ class _AddMedFormState extends State<AddMedForm> {
               onPressed: () async {
                 await DatabaseService(uid: user.uid)
                     .updateUserData(_currentMedname, _currentNotes);
+                Navigator.pop(context);
               }),
         ],
       ),
