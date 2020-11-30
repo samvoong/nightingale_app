@@ -4,6 +4,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 // Example holidays
 final Map<DateTime, List> _holidays = {
@@ -13,6 +16,9 @@ final Map<DateTime, List> _holidays = {
   DateTime(2020, 4, 21): ['Easter Sunday'],
   DateTime(2020, 4, 22): ['Easter Monday'],
 };
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+FlutterLocalNotificationsPlugin();
 
 class SchedulingPage extends StatelessWidget {
   @override
@@ -42,6 +48,8 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
   List _selectedEvents;
   AnimationController _animationController;
   CalendarController _calendarController;
+
+  Dialog dialog = new Dialog();
 
   @override
   void initState() {
@@ -302,7 +310,7 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
             ),
           ],
         ),
-        const SizedBox(height: 8.0),
+        SizedBox(height: 8.0),
         RaisedButton(
           child: Text(
               'Set day ${dateTime.day}-${dateTime.month}-${dateTime.year}'),
@@ -311,6 +319,20 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
               DateTime(dateTime.year, dateTime.month, dateTime.day),
               runCallback: true,
             );
+          },
+        ),
+        SizedBox(height: 8.0),
+        RaisedButton(
+          child: Text('Add Alarm'),
+          onPressed: () {
+            scheduleAlarm();
+            final snackBar = SnackBar(
+              content: Text('Alarm set successfully!'),
+              duration: Duration(seconds: 2)
+            );
+
+            print('Alarm set successfully!');
+            Scaffold.of(context).showSnackBar(snackBar);
           },
         ),
       ],
@@ -335,4 +357,72 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
           .toList(),
     );
   }
+
+  void scheduleAlarm() async {
+    var scheduledNotificationDateTime = tz.TZDateTime.now(tz.local).add(const Duration(seconds: 10));
+
+    var android = new AndroidNotificationDetails(
+      'Nightingale ID',
+      'Nightingale',
+      'It is time to take your medicine',
+      sound: RawResourceAndroidNotificationSound('nightingale_alarm_1'),
+      icon: 'alarm_icon',
+      largeIcon: DrawableResourceAndroidBitmap('nightingale_logo'),
+      enableLights: true,
+      color: const Color.fromARGB(255, 255, 0, 0),
+      ledColor: const Color.fromARGB(255, 255, 0, 0),
+      ledOnMs: 1000,
+      ledOffMs: 500,
+      priority: Priority.high,
+      importance: Importance.max,
+    );
+    var iOS = new IOSNotificationDetails();
+    var platform = new NotificationDetails(android: android, iOS: iOS);
+    await flutterLocalNotificationsPlugin.zonedSchedule(
+      0,
+      'Nightingale',
+      'It is time to take your medicine! Click here to see today\'s schedule.',
+      scheduledNotificationDateTime,
+      platform,
+      androidAllowWhileIdle: true,
+    );
+  }
+}
+
+class SecondScreen extends StatefulWidget {
+  const SecondScreen(
+      this.payload, {
+        Key key,
+      }) : super(key: key);
+
+  final String payload;
+
+  @override
+  State<StatefulWidget> createState() => SecondScreenState();
+}
+
+class SecondScreenState extends State<SecondScreen> {
+  String _payload;
+  @override
+  void initState() {
+    super.initState();
+    _payload = widget.payload;
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    appBar: AppBar(
+      title: Text('Notification Screen'),
+    ),
+    body: Center(
+      child: RaisedButton(
+        onPressed: () {
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => SchedulingPage(),
+          ));
+        },
+        child: const Text('Go back!'),
+      ),
+    ),
+  );
 }
